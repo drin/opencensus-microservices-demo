@@ -4,6 +4,29 @@ import grpc
 import demo_pb2 as demo__pb2
 
 
+def serialize_with_trace(fn_serialize):
+
+    def add_trace_to_request(**kwargs):
+        input_args = kwargs
+        print(input_args)
+
+        return fn_serialize(**kwargs)
+
+    return add_trace_to_request
+
+
+def deserialize_with_trace(fn_deserialize):
+
+    def add_trace_to_response(**kwargs):
+        response = fn_deserialize(**kwargs)
+
+        print(response)
+
+        return response
+
+    return add_trace_to_response
+
+
 class CartServiceStub(object):
     """-----------------Cart service-----------------
 
@@ -150,13 +173,18 @@ class ProductCatalogServiceStub(object):
             channel: A grpc.Channel.
         """
 
-        fn_list_serializer = demo__pb2.ListProductsRequest.SerializeToString
-        fn_list_deserializer = demo__pb2.ListProductsResponse.FromString
+        fn_list_serialize = serialize_with_trace(
+            demo__pb2.ListProductsRequest.SerializeToString
+        )
+
+        fn_list_deserialize = deserialize_with_trace(
+            demo__pb2.ListProductsResponse.FromString
+        )
 
         self.ListProducts = channel.unary_unary(
             '/hipstershop.ProductCatalogService/ListProducts',
-            request_serializer=fn_list_serializer,
-            response_deserializer=fn_list_deserializer,
+            request_serializer=fn_list_serialize,
+            response_deserializer=fn_list_deserialize,
         )
 
         self.GetProduct = channel.unary_unary(
@@ -202,8 +230,13 @@ class ProductCatalogServiceServicer(object):
 
 
 def add_ProductCatalogServiceServicer_to_server(servicer, server):
-    fn_list_deserialize = demo__pb2.ListProductsRequest.FromString
-    fn_list_serialize = demo__pb2.ListProductsResponse.SerializeToString
+    fn_list_deserialize = deserialize_with_trace(
+        demo__pb2.ListProductsRequest.FromString
+    )
+
+    fn_list_serialize = serialize_with_trace(
+        demo__pb2.ListProductsResponse.SerializeToString
+    )
 
     fn_search_serialize = demo__pb2.SearchProductsResponse.SerializeToString
 
