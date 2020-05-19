@@ -5,498 +5,565 @@ import demo_pb2 as demo__pb2
 
 
 class CartServiceStub(object):
-  """-----------------Cart service-----------------
+    """-----------------Cart service-----------------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.AddItem = channel.unary_unary(
-        '/hipstershop.CartService/AddItem',
-        request_serializer=demo__pb2.AddItemRequest.SerializeToString,
-        response_deserializer=demo__pb2.Empty.FromString,
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.AddItem = channel.unary_unary(
+            '/hipstershop.CartService/AddItem',
+            request_serializer=demo__pb2.AddItemRequest.SerializeToString,
+            response_deserializer=demo__pb2.Empty.FromString,
         )
-    self.GetCart = channel.unary_unary(
-        '/hipstershop.CartService/GetCart',
-        request_serializer=demo__pb2.GetCartRequest.SerializeToString,
-        response_deserializer=demo__pb2.Cart.FromString,
+
+        self.GetCart = channel.unary_unary(
+            '/hipstershop.CartService/GetCart',
+            request_serializer=demo__pb2.GetCartRequest.SerializeToString,
+            response_deserializer=demo__pb2.Cart.FromString,
         )
-    self.EmptyCart = channel.unary_unary(
-        '/hipstershop.CartService/EmptyCart',
-        request_serializer=demo__pb2.EmptyCartRequest.SerializeToString,
-        response_deserializer=demo__pb2.Empty.FromString,
+
+        self.EmptyCart = channel.unary_unary(
+            '/hipstershop.CartService/EmptyCart',
+            request_serializer=demo__pb2.EmptyCartRequest.SerializeToString,
+            response_deserializer=demo__pb2.Empty.FromString,
         )
 
 
 class CartServiceServicer(object):
-  """-----------------Cart service-----------------
+    """-----------------Cart service-----------------
 
-  """
+    """
 
-  def AddItem(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def AddItem(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-  def GetCart(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def GetCart(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-  def EmptyCart(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def EmptyCart(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_CartServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'AddItem': grpc.unary_unary_rpc_method_handler(
-          servicer.AddItem,
-          request_deserializer=demo__pb2.AddItemRequest.FromString,
-          response_serializer=demo__pb2.Empty.SerializeToString,
-      ),
-      'GetCart': grpc.unary_unary_rpc_method_handler(
-          servicer.GetCart,
-          request_deserializer=demo__pb2.GetCartRequest.FromString,
-          response_serializer=demo__pb2.Cart.SerializeToString,
-      ),
-      'EmptyCart': grpc.unary_unary_rpc_method_handler(
-          servicer.EmptyCart,
-          request_deserializer=demo__pb2.EmptyCartRequest.FromString,
-          response_serializer=demo__pb2.Empty.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.CartService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    rpc_method_handlers = {
+            'AddItem': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddItem,
+                    request_deserializer=demo__pb2.AddItemRequest.FromString,
+                    response_serializer=demo__pb2.Empty.SerializeToString,
+            ),
+            'GetCart': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetCart,
+                    request_deserializer=demo__pb2.GetCartRequest.FromString,
+                    response_serializer=demo__pb2.Cart.SerializeToString,
+            ),
+            'EmptyCart': grpc.unary_unary_rpc_method_handler(
+                    servicer.EmptyCart,
+                    request_deserializer=demo__pb2.EmptyCartRequest.FromString,
+                    response_serializer=demo__pb2.Empty.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'hipstershop.CartService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
 class RecommendationServiceStub(object):
-  """---------------Recommendation service----------
+    """---------------Recommendation service----------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.ListRecommendations = channel.unary_unary(
-        '/hipstershop.RecommendationService/ListRecommendations',
-        request_serializer=demo__pb2.ListRecommendationsRequest.SerializeToString,
-        response_deserializer=demo__pb2.ListRecommendationsResponse.FromString,
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+
+        fn_serialize = demo__pb2.ListRecommendationsRequest.SerializeToString
+        fn_deserialize = demo__pb2.ListRecommendationsResponse.FromString
+
+        self.ListRecommendations = channel.unary_unary(
+            '/hipstershop.RecommendationService/ListRecommendations',
+            request_serializer=fn_serialize,
+            response_deserializer=fn_deserialize,
         )
 
 
 class RecommendationServiceServicer(object):
-  """---------------Recommendation service----------
+    """---------------Recommendation service----------
 
-  """
+    """
 
-  def ListRecommendations(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def ListRecommendations(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_RecommendationServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'ListRecommendations': grpc.unary_unary_rpc_method_handler(
-          servicer.ListRecommendations,
-          request_deserializer=demo__pb2.ListRecommendationsRequest.FromString,
-          response_serializer=demo__pb2.ListRecommendationsResponse.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.RecommendationService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    fn_deserialize = demo__pb2.ListRecommendationsRequest.FromString
+    fn_serialize = demo__pb2.ListRecommendationsResponse.SerializeToString
+
+    rpc_method_handlers = {
+        'ListRecommendations': grpc.unary_unary_rpc_method_handler(
+            servicer.ListRecommendations,
+            request_deserializer=fn_deserialize,
+            response_serializer=fn_serialize,
+        ),
+    }
+
+    generic_handler = grpc.method_handlers_generic_handler(
+        'hipstershop.RecommendationService', rpc_method_handlers
+    )
+
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
 class ProductCatalogServiceStub(object):
-  """---------------Product Catalog----------------
+    """---------------Product Catalog----------------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.ListProducts = channel.unary_unary(
-        '/hipstershop.ProductCatalogService/ListProducts',
-        request_serializer=demo__pb2.ListProductsRequest.SerializeToString,
-        response_deserializer=demo__pb2.ListProductsResponse.FromString,
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+
+        fn_list_serializer = demo__pb2.ListProductsRequest.SerializeToString
+        fn_list_deserializer = demo__pb2.ListProductsResponse.FromString
+
+        self.ListProducts = channel.unary_unary(
+            '/hipstershop.ProductCatalogService/ListProducts',
+            request_serializer=fn_list_serializer,
+            response_deserializer=fn_list_deserializer,
         )
-    self.GetProduct = channel.unary_unary(
-        '/hipstershop.ProductCatalogService/GetProduct',
-        request_serializer=demo__pb2.GetProductRequest.SerializeToString,
-        response_deserializer=demo__pb2.Product.FromString,
+
+        self.GetProduct = channel.unary_unary(
+            '/hipstershop.ProductCatalogService/GetProduct',
+            request_serializer=demo__pb2.GetProductRequest.SerializeToString,
+            response_deserializer=demo__pb2.Product.FromString,
         )
-    self.SearchProducts = channel.unary_unary(
-        '/hipstershop.ProductCatalogService/SearchProducts',
-        request_serializer=demo__pb2.SearchProductsRequest.SerializeToString,
-        response_deserializer=demo__pb2.SearchProductsResponse.FromString,
+
+        fn_search_serialize = demo__pb2.SearchProductsRequest.SerializeToString
+        fn_search_deserialize = demo__pb2.SearchProductsResponse.FromString
+        self.SearchProducts = channel.unary_unary(
+            '/hipstershop.ProductCatalogService/SearchProducts',
+            request_serializer=fn_search_serialize,
+            response_deserializer=fn_search_deserialize,
         )
 
 
 class ProductCatalogServiceServicer(object):
-  """---------------Product Catalog----------------
+    """---------------Product Catalog----------------
 
-  """
+    """
 
-  def ListProducts(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def ListProducts(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-  def GetProduct(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def GetProduct(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-  def SearchProducts(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def SearchProducts(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_ProductCatalogServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'ListProducts': grpc.unary_unary_rpc_method_handler(
-          servicer.ListProducts,
-          request_deserializer=demo__pb2.ListProductsRequest.FromString,
-          response_serializer=demo__pb2.ListProductsResponse.SerializeToString,
-      ),
-      'GetProduct': grpc.unary_unary_rpc_method_handler(
-          servicer.GetProduct,
-          request_deserializer=demo__pb2.GetProductRequest.FromString,
-          response_serializer=demo__pb2.Product.SerializeToString,
-      ),
-      'SearchProducts': grpc.unary_unary_rpc_method_handler(
-          servicer.SearchProducts,
-          request_deserializer=demo__pb2.SearchProductsRequest.FromString,
-          response_serializer=demo__pb2.SearchProductsResponse.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.ProductCatalogService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    fn_list_deserialize = demo__pb2.ListProductsRequest.FromString
+    fn_list_serialize = demo__pb2.ListProductsResponse.SerializeToString
+
+    fn_search_serialize = demo__pb2.SearchProductsResponse.SerializeToString
+
+    rpc_method_handlers = {
+        'ListProducts': grpc.unary_unary_rpc_method_handler(
+            servicer.ListProducts,
+            request_deserializer=fn_list_deserialize,
+            response_serializer=fn_list_serialize,
+        ),
+
+        'GetProduct': grpc.unary_unary_rpc_method_handler(
+            servicer.GetProduct,
+            request_deserializer=demo__pb2.GetProductRequest.FromString,
+            response_serializer=demo__pb2.Product.SerializeToString,
+        ),
+
+        'SearchProducts': grpc.unary_unary_rpc_method_handler(
+            servicer.SearchProducts,
+            request_deserializer=demo__pb2.SearchProductsRequest.FromString,
+            response_serializer=fn_search_serialize,
+        ),
+    }
+
+    generic_handler = grpc.method_handlers_generic_handler(
+            'hipstershop.ProductCatalogService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
 class ShippingServiceStub(object):
-  """---------------Shipping Service----------
+    """---------------Shipping Service----------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.GetQuote = channel.unary_unary(
-        '/hipstershop.ShippingService/GetQuote',
-        request_serializer=demo__pb2.GetQuoteRequest.SerializeToString,
-        response_deserializer=demo__pb2.GetQuoteResponse.FromString,
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.GetQuote = channel.unary_unary(
+            '/hipstershop.ShippingService/GetQuote',
+            request_serializer=demo__pb2.GetQuoteRequest.SerializeToString,
+            response_deserializer=demo__pb2.GetQuoteResponse.FromString,
         )
-    self.ShipOrder = channel.unary_unary(
-        '/hipstershop.ShippingService/ShipOrder',
-        request_serializer=demo__pb2.ShipOrderRequest.SerializeToString,
-        response_deserializer=demo__pb2.ShipOrderResponse.FromString,
+
+        self.ShipOrder = channel.unary_unary(
+            '/hipstershop.ShippingService/ShipOrder',
+            request_serializer=demo__pb2.ShipOrderRequest.SerializeToString,
+            response_deserializer=demo__pb2.ShipOrderResponse.FromString,
         )
 
 
 class ShippingServiceServicer(object):
-  """---------------Shipping Service----------
+    """---------------Shipping Service----------
 
-  """
+    """
 
-  def GetQuote(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def GetQuote(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-  def ShipOrder(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def ShipOrder(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_ShippingServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'GetQuote': grpc.unary_unary_rpc_method_handler(
-          servicer.GetQuote,
-          request_deserializer=demo__pb2.GetQuoteRequest.FromString,
-          response_serializer=demo__pb2.GetQuoteResponse.SerializeToString,
-      ),
-      'ShipOrder': grpc.unary_unary_rpc_method_handler(
-          servicer.ShipOrder,
-          request_deserializer=demo__pb2.ShipOrderRequest.FromString,
-          response_serializer=demo__pb2.ShipOrderResponse.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.ShippingService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    rpc_method_handlers = {
+        'GetQuote': grpc.unary_unary_rpc_method_handler(
+            servicer.GetQuote,
+            request_deserializer=demo__pb2.GetQuoteRequest.FromString,
+            response_serializer=demo__pb2.GetQuoteResponse.SerializeToString,
+        ),
+        'ShipOrder': grpc.unary_unary_rpc_method_handler(
+            servicer.ShipOrder,
+            request_deserializer=demo__pb2.ShipOrderRequest.FromString,
+            response_serializer=demo__pb2.ShipOrderResponse.SerializeToString,
+        ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'hipstershop.ShippingService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
 class CurrencyServiceStub(object):
-  """-----------------Currency service-----------------
+    """-----------------Currency service-----------------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.GetSupportedCurrencies = channel.unary_unary(
-        '/hipstershop.CurrencyService/GetSupportedCurrencies',
-        request_serializer=demo__pb2.GetSupportedCurrenciesRequest.SerializeToString,
-        response_deserializer=demo__pb2.GetSupportedCurrenciesResponse.FromString,
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+
+        fn_supported_serialize = (
+            demo__pb2.GetSupportedCurrenciesRequest.SerializeToString
         )
-    self.Convert = channel.unary_unary(
-        '/hipstershop.CurrencyService/Convert',
-        request_serializer=demo__pb2.CurrencyConversionRequest.SerializeToString,
-        response_deserializer=demo__pb2.Money.FromString,
+
+        fn_supported_deserialize = (
+            demo__pb2.GetSupportedCurrenciesResponse.FromString
+        )
+
+        fn_conversion_serialize = (
+            demo__pb2.CurrencyConversionRequest.SerializeToString
+        )
+
+        self.GetSupportedCurrencies = channel.unary_unary(
+            '/hipstershop.CurrencyService/GetSupportedCurrencies',
+            request_serializer=fn_supported_serialize,
+            response_deserializer=fn_supported_deserialize,
+        )
+
+        self.Convert = channel.unary_unary(
+            '/hipstershop.CurrencyService/Convert',
+            request_serializer=fn_conversion_serialize,
+            response_deserializer=demo__pb2.Money.FromString,
         )
 
 
 class CurrencyServiceServicer(object):
-  """-----------------Currency service-----------------
+    """-----------------Currency service-----------------
 
-  """
+    """
 
-  def GetSupportedCurrencies(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def GetSupportedCurrencies(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-  def Convert(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def Convert(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_CurrencyServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'GetSupportedCurrencies': grpc.unary_unary_rpc_method_handler(
-          servicer.GetSupportedCurrencies,
-          request_deserializer=demo__pb2.GetSupportedCurrenciesRequest.FromString,
-          response_serializer=demo__pb2.GetSupportedCurrenciesResponse.SerializeToString,
-      ),
-      'Convert': grpc.unary_unary_rpc_method_handler(
-          servicer.Convert,
-          request_deserializer=demo__pb2.CurrencyConversionRequest.FromString,
-          response_serializer=demo__pb2.Money.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.CurrencyService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    fn_conversion_deserialize = demo__pb2.CurrencyConversionRequest.FromString
+    fn_supported_serialize = demo__pb2.GetSupportedCurrenciesRequest.FromString
+
+    fn_supported_deserialize = (
+        demo__pb2.GetSupportedCurrenciesResponse.SerializeToString
+    )
+
+    rpc_method_handlers = {
+        'GetSupportedCurrencies': grpc.unary_unary_rpc_method_handler(
+            servicer.GetSupportedCurrencies,
+            request_deserializer=fn_supported_serialize,
+            response_serializer=fn_supported_deserialize,
+        ),
+        'Convert': grpc.unary_unary_rpc_method_handler(
+            servicer.Convert,
+            request_deserializer=fn_conversion_deserialize,
+            response_serializer=demo__pb2.Money.SerializeToString,
+        ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'hipstershop.CurrencyService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
 class PaymentServiceStub(object):
-  """-------------Payment service-----------------
+    """-------------Payment service-----------------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.Charge = channel.unary_unary(
-        '/hipstershop.PaymentService/Charge',
-        request_serializer=demo__pb2.ChargeRequest.SerializeToString,
-        response_deserializer=demo__pb2.ChargeResponse.FromString,
-        )
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.Charge = channel.unary_unary(
+                '/hipstershop.PaymentService/Charge',
+                request_serializer=demo__pb2.ChargeRequest.SerializeToString,
+                response_deserializer=demo__pb2.ChargeResponse.FromString,
+                )
 
 
 class PaymentServiceServicer(object):
-  """-------------Payment service-----------------
+    """-------------Payment service-----------------
 
-  """
+    """
 
-  def Charge(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def Charge(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_PaymentServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'Charge': grpc.unary_unary_rpc_method_handler(
-          servicer.Charge,
-          request_deserializer=demo__pb2.ChargeRequest.FromString,
-          response_serializer=demo__pb2.ChargeResponse.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.PaymentService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    rpc_method_handlers = {
+        'Charge': grpc.unary_unary_rpc_method_handler(
+            servicer.Charge,
+            request_deserializer=demo__pb2.ChargeRequest.FromString,
+            response_serializer=demo__pb2.ChargeResponse.SerializeToString,
+        ),
+    }
+
+    generic_handler = grpc.method_handlers_generic_handler(
+        'hipstershop.PaymentService', rpc_method_handlers
+    )
+
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
 class EmailServiceStub(object):
-  """-------------Email service-----------------
+    """-------------Email service-----------------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.SendOrderConfirmation = channel.unary_unary(
-        '/hipstershop.EmailService/SendOrderConfirmation',
-        request_serializer=demo__pb2.SendOrderConfirmationRequest.SerializeToString,
-        response_deserializer=demo__pb2.Empty.FromString,
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+
+        fn_serialize = demo__pb2.SendOrderConfirmationRequest.SerializeToString
+
+        self.SendOrderConfirmation = channel.unary_unary(
+            '/hipstershop.EmailService/SendOrderConfirmation',
+            request_serializer=fn_serialize,
+            response_deserializer=demo__pb2.Empty.FromString,
         )
 
 
 class EmailServiceServicer(object):
-  """-------------Email service-----------------
+    """-------------Email service-----------------
 
-  """
+    """
 
-  def SendOrderConfirmation(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def SendOrderConfirmation(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_EmailServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'SendOrderConfirmation': grpc.unary_unary_rpc_method_handler(
-          servicer.SendOrderConfirmation,
-          request_deserializer=demo__pb2.SendOrderConfirmationRequest.FromString,
-          response_serializer=demo__pb2.Empty.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.EmailService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    fn_deserialize = demo__pb2.SendOrderConfirmationRequest.FromString
+
+    rpc_method_handlers = {
+        'SendOrderConfirmation': grpc.unary_unary_rpc_method_handler(
+            servicer.SendOrderConfirmation,
+            request_deserializer=fn_deserialize,
+            response_serializer=demo__pb2.Empty.SerializeToString,
+        ),
+    }
+
+    generic_handler = grpc.method_handlers_generic_handler(
+        'hipstershop.EmailService', rpc_method_handlers
+    )
+
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
 class CheckoutServiceStub(object):
-  """-------------Checkout service-----------------
+    """-------------Checkout service-----------------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.PlaceOrder = channel.unary_unary(
-        '/hipstershop.CheckoutService/PlaceOrder',
-        request_serializer=demo__pb2.PlaceOrderRequest.SerializeToString,
-        response_deserializer=demo__pb2.PlaceOrderResponse.FromString,
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+
+        self.PlaceOrder = channel.unary_unary(
+            '/hipstershop.CheckoutService/PlaceOrder',
+            request_serializer=demo__pb2.PlaceOrderRequest.SerializeToString,
+            response_deserializer=demo__pb2.PlaceOrderResponse.FromString,
         )
 
 
 class CheckoutServiceServicer(object):
-  """-------------Checkout service-----------------
+    """-------------Checkout service-----------------
 
-  """
+    """
 
-  def PlaceOrder(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def PlaceOrder(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_CheckoutServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'PlaceOrder': grpc.unary_unary_rpc_method_handler(
-          servicer.PlaceOrder,
-          request_deserializer=demo__pb2.PlaceOrderRequest.FromString,
-          response_serializer=demo__pb2.PlaceOrderResponse.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.CheckoutService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    rpc_method_handlers = {
+        'PlaceOrder': grpc.unary_unary_rpc_method_handler(
+            servicer.PlaceOrder,
+            request_deserializer=demo__pb2.PlaceOrderRequest.FromString,
+            response_serializer=demo__pb2.PlaceOrderResponse.SerializeToString,
+        ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'hipstershop.CheckoutService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
 class AdServiceStub(object):
-  """------------Ad service------------------
+    """------------Ad service------------------
 
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
     """
-    self.GetAds = channel.unary_unary(
-        '/hipstershop.AdService/GetAds',
-        request_serializer=demo__pb2.AdRequest.SerializeToString,
-        response_deserializer=demo__pb2.AdResponse.FromString,
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+
+        self.GetAds = channel.unary_unary(
+            '/hipstershop.AdService/GetAds',
+            request_serializer=demo__pb2.AdRequest.SerializeToString,
+            response_deserializer=demo__pb2.AdResponse.FromString,
         )
 
 
 class AdServiceServicer(object):
-  """------------Ad service------------------
+    """------------Ad service------------------
 
-  """
+    """
 
-  def GetAds(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
+    def GetAds(self, request, context):
+        # missing associated documentation comment in .proto file
+        pass
+
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
 
 def add_AdServiceServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'GetAds': grpc.unary_unary_rpc_method_handler(
-          servicer.GetAds,
-          request_deserializer=demo__pb2.AdRequest.FromString,
-          response_serializer=demo__pb2.AdResponse.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'hipstershop.AdService', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
+    rpc_method_handlers = {
+            'GetAds': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAds,
+                    request_deserializer=demo__pb2.AdRequest.FromString,
+                    response_serializer=demo__pb2.AdResponse.SerializeToString,
+            ),
+    }
+
+    generic_handler = grpc.method_handlers_generic_handler(
+        'hipstershop.AdService', rpc_method_handlers
+    )
+
+    server.add_generic_rpc_handlers((generic_handler,))
