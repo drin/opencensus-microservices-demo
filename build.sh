@@ -1,4 +1,4 @@
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=/usr/lib/jvm/$(archlinux-java get)
 
 services=(
     "adservice"
@@ -13,13 +13,13 @@ services=(
     "shippingservice"
 )
 
-for ((i=0;i<${#services[@]};i++)) do
-  cd src/${services[i]};
+for servicename in ${services[@]}; do
+    pushd "src/${servicename}"
+    pwd
 
-  pwd
-  sudo chmod +x build.sh
-  ./build.sh
-  echo "done"
+    chmod +x build.sh
+    ./build.sh
 
-  cd ../..
+    echo "done"
+    popd
 done;
