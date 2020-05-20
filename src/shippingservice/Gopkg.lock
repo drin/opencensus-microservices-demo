@@ -54,7 +54,7 @@
   revision = "ee964604cc9ab3ff85ad2f9326e9a4cf68a8047c"
 
 [[projects]]
-  digest = "1:a2ecb56e5053d942aafc86738915fb94c9131bac848c543b8b6764365fd69080"
+  digest = "1:8be75099586ec794fb93c467584431c6725a44648463721df4601bee8550a168"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
@@ -68,8 +68,8 @@
     "ptypes/wrappers",
   ]
   pruneopts = "T"
-  revision = "aa810b61a9c79d51363740d207bb46cf8e620ed5"
-  version = "v1.2.0"
+  revision = "d04d7b157bb510b1e0c10132224b616ac0e26b17"
+  version = "v1.4.2"
 
 [[projects]]
   branch = "master"
@@ -86,6 +86,14 @@
   pruneopts = "T"
   revision = "317e0006254c44a0ac427cc52a0e083ff0b9622f"
   version = "v2.0.0"
+
+[[projects]]
+  digest = "1:6eb58a12ff2e21abe77271d29981dfc74211ae13500a5f34d34c5a098945d8b7"
+  name = "github.com/hashicorp/go-uuid"
+  packages = ["."]
+  pruneopts = "T"
+  revision = "6195a4f20692188e0a389def25559731d1e130f9"
+  version = "v1.0.2"
 
 [[projects]]
   digest = "1:2f5ac2377592d9c21bf10809d68ac24bbaa9f7bc85d3b59e632a6fe8f79083e2"
@@ -280,6 +288,49 @@
   revision = "32fb0ac620c32ba40a4626ddf94d90d12cce3455"
   version = "v1.14.0"
 
+[[projects]]
+  digest = "1:edc5fa1b52d01ebcecda3788fc84341f7d66408894bba2598d73246264486689"
+  name = "google.golang.org/protobuf"
+  packages = [
+    "encoding/prototext",
+    "encoding/protowire",
+    "internal/descfmt",
+    "internal/descopts",
+    "internal/detrand",
+    "internal/encoding/defval",
+    "internal/encoding/messageset",
+    "internal/encoding/tag",
+    "internal/encoding/text",
+    "internal/errors",
+    "internal/fieldnum",
+    "internal/fieldsort",
+    "internal/filedesc",
+    "internal/filetype",
+    "internal/flags",
+    "internal/genname",
+    "internal/impl",
+    "internal/mapsort",
+    "internal/pragma",
+    "internal/set",
+    "internal/strs",
+    "internal/version",
+    "proto",
+    "reflect/protoreflect",
+    "reflect/protoregistry",
+    "runtime/protoiface",
+    "runtime/protoimpl",
+    "types/descriptorpb",
+    "types/known/anypb",
+    "types/known/durationpb",
+    "types/known/emptypb",
+    "types/known/structpb",
+    "types/known/timestamppb",
+    "types/known/wrapperspb",
+  ]
+  pruneopts = "T"
+  revision = "d165be301fb1e13390ad453281ded24385fd8ebc"
+  version = "v1.23.0"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -290,6 +341,7 @@
     "github.com/AleckDarcy/reload",
     "github.com/AleckDarcy/reload/core/tracer",
     "github.com/golang/protobuf/proto",
+    "github.com/hashicorp/go-uuid",
     "go.opencensus.io/exporter/jaeger",
     "go.opencensus.io/plugin/ocgrpc",
     "go.opencensus.io/stats/view",
