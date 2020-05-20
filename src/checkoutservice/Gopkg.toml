@@ -3,7 +3,7 @@
 # Refer to https://golang.github.io/dep/docs/Gopkg.toml.html
 # for detailed Gopkg.toml documentation.
 #
-# required = ["github.com/user/thing/cmd/thing"]
+required = ["github.com/hashicorp/go-uuid"]
 # ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
 #
 # [[constraint]]
@@ -25,6 +25,10 @@
 #   unused-packages = true
 
 
+[[override]]
+  name = "github.com/hashicorp/go-uuid"
+  version = "1.0.2"
+
 [[constraint]]
   name = "cloud.google.com/go"
   version = "0.27.0"
@@ -35,7 +39,7 @@
 
 [[constraint]]
   name = "github.com/golang/protobuf"
-  version = "1.2.0"
+  version = "1.4.1"
 
 [[constraint]]
   name = "github.com/google/uuid"
